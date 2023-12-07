@@ -154,7 +154,7 @@ int ini_parser::get_int_value(std::string param)
     }
     catch (const std::exception &e)
     {
-        throw e.what();
+        throw std::runtime_error(e.what());
     }
 
     return numb;
@@ -171,7 +171,7 @@ double ini_parser::get_double_value(std::string param)
     }
     catch (const std::exception &e)
     {
-        throw e.what();
+        throw std::runtime_error(e.what());
     }
 
     return numb;
@@ -185,7 +185,7 @@ std::string ini_parser::get_string_value(std::string param) {
     }
     catch (const std::exception &e)
     {
-        throw e.what();
+        throw std::runtime_error(e.what());
     }
 
     return text;
@@ -215,7 +215,7 @@ std::string ini_parser::from_value(std::string param)
     }
     else
     {
-        throw "Invalid parameter!";
+        throw std::runtime_error("Invalid parameter!");
     }
 
     // std::cout << sec_name << std::endl;
@@ -228,7 +228,7 @@ std::string ini_parser::from_value(std::string param)
         auto par = sec->param.find(val);
         if (par == sec->param.end())
         {
-            throw "The variable does not exist!";
+            throw std::runtime_error("The variable does not exist!");
         }
         else
         {
@@ -238,7 +238,7 @@ std::string ini_parser::from_value(std::string param)
     }
     else
     {
-        throw "There is no such section!";
+        throw std::runtime_error("There is no such section!");
     }
 
     return "";

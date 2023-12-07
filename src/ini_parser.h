@@ -8,6 +8,7 @@
 #include <fstream>
 #include <map>
 #include <typeinfo>
+#include <stdexcept>
 
 class ini_parser
 {
@@ -36,7 +37,7 @@ public:
         }
         else
         {
-            throw "Unknown data type!";
+            throw std::runtime_error("Unknown data type!");
         }
 
         return t_val;
